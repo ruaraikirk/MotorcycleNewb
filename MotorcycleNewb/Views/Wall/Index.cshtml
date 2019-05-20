@@ -1,0 +1,33 @@
+﻿@model MotorcycleNewb.Models.ProfileViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>View</h2>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-3 hidden-xs hidden-sm">
+            <table>
+                <tr>
+                    <td>
+                        @Html.DisplayFor(m => m.CurrentProfile.FirstName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(m => m.CurrentProfile.LastName)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.LabelFor(m => m.CurrentProfile.City)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(m => m.CurrentProfile.City)
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+

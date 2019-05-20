@@ -31,5 +31,7 @@ namespace MotorcycleNewb.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<MotorcycleNewb.Models.ProfileViewModel> ProfileViewModels { get; set; }
     }
 }

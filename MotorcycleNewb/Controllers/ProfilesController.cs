@@ -53,7 +53,7 @@ namespace MotorcycleNewb.Controllers
         // GET: Profiles/Create
         public ActionResult Create()
         {
-            ViewBag.AccountId = applicationServices.GetCurrentUserId(User);
+            ViewBag.AccountId = applicationServices.GetCurrentAccountId(User);
 
             return View();
         }
@@ -67,12 +67,12 @@ namespace MotorcycleNewb.Controllers
         {
             if (ModelState.IsValid)
             {
-                ViewBag.AccountId = applicationServices.GetCurrentUserId(User);
+                ViewBag.AccountId = applicationServices.GetCurrentAccountId(User);
                 applicationServices.Add(profile);
                 applicationServices.Save();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Wall"); // Redirect to Wall (profile page) following profile creation
             }
-            //ViewBag.AccountId = applicationServices.GetCurrentUserId(User);
+            //ViewBag.AccountId = applicationServices.GetCurrentAccountId(User);
             return View(profile);
         }
         /*

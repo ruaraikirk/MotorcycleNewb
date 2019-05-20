@@ -60,7 +60,7 @@ namespace MotorcycleNewb.ServiceLayer
             return GetProfile(guid).ProfileId;
         }
         // Get the AcountId of the current user
-        public Guid GetCurrentUserId(IPrincipal user)
+        public Guid GetCurrentAccountId(IPrincipal user)
         {
             return new Guid(user.Identity.GetUserId()); // Return User ID using the UserIdClaim type
         }
