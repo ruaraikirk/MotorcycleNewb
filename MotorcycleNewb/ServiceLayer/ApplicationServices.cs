@@ -21,13 +21,14 @@ namespace MotorcycleNewb.ServiceLayer
         {
             unit.Commit();
         }
-
         public void DisposeContext()
         {
             unit.Dispose();
         }
 
-
+        /*
+         * PROFILE CRUD operations 
+         */
         // Add new profile to database
         public void Add(Profile profile)
         {
@@ -44,6 +45,9 @@ namespace MotorcycleNewb.ServiceLayer
             unit.Delete(profile);
         }
 
+        /*
+         * Supporting PROFILE methods 
+         */
         //Get profile object from a given AcountId (dbo.AspNetUsers.Id) ****
         public Profile GetProfile(Guid id)
         {
@@ -68,6 +72,15 @@ namespace MotorcycleNewb.ServiceLayer
         public bool EnsureIsUserProfile(Profile profile, IPrincipal user)
         {
             return profile.AccountId == new Guid(user.Identity.GetUserId());
+        }
+
+        /*
+         * IMAGE CRUD operations 
+         */
+        // Add new image to database
+        public void Add(Image image)
+        {
+            unit.Images.Add(image);
         }
     }
 }

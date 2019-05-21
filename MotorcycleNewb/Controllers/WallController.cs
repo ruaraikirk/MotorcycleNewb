@@ -31,5 +31,7 @@ namespace MotorcycleNewb.Controllers
 
             return View(wall);
         }
+
+        // TODO Redirect upon click of 'MotorcycleNewb' on header
     }
 }

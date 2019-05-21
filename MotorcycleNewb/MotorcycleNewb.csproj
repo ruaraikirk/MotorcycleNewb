@@ -208,6 +208,7 @@
     <Compile Include="Models\DataAccessLayer\Repository.cs" />
     <Compile Include="Models\DataAccessLayer\UnitOfWork.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Image.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Profile.cs" />
     <Compile Include="Models\ProfileViewModel.cs" />
@@ -216,10 +217,13 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Images\account-profile-avatar.png" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Images\helmet-avatar.png" />
+    <Content Include="Content\Images\motorcycle-image-avatar.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />

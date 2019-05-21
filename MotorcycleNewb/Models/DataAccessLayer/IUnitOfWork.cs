@@ -9,6 +9,7 @@ namespace MotorcycleNewb.Models.DataAccessLayer
     public interface IUnitOfWork : IDisposable
     {
         IRepository<Profile> Profiles { get; set; }
+        IRepository<Image> Images { get; set; }
         //ToDo
 
         void Update(Profile element);

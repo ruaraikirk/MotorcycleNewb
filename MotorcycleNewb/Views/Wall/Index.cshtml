@@ -26,6 +26,40 @@
                         @Html.DisplayFor(m => m.CurrentProfile.City)
                     </td>
                 </tr>
+                <tr>
+                    <td>
+                        @Html.LabelFor(m => m.CurrentProfile.MotorcycleMake)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(m => m.CurrentProfile.MotorcycleMake)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.LabelFor(m => m.CurrentProfile.MotorcycleModel)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(m => m.CurrentProfile.MotorcycleModel)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Profile Picture:
+                    </td>
+                    <td>
+                        <img src='@Model.CurrentProfile.ProfileImage.FileName' 
+                             style='border-radius:50%;width:auto;height:300px;' />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Motorcycle Picture:
+                    </td>
+                    <td>
+                        <img src='@Model.CurrentProfile.MotorcycleImage.FileName'
+                             style='border-radius:50%;width:auto;height:300px;' />
+                    </td>
+                </tr>
             </table>
         </div>
     </div>

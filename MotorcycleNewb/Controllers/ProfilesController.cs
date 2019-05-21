@@ -17,13 +17,11 @@ namespace MotorcycleNewb.Controllers
         // private ApplicationDbContext db = new ApplicationDbContext();
         private ApplicationServices applicationServices;
 
-        // Constructor 
-        //For testing purpose
+        // Constructors 
         public ProfilesController()
         {
             applicationServices = new ApplicationServices(new UnitOfWork(new ApplicationDbContext()));
         }
-        //For testing purpose
         public ProfilesController(IUnitOfWork unit)
         {
             applicationServices = new ApplicationServices(unit);
@@ -32,22 +30,39 @@ namespace MotorcycleNewb.Controllers
         // GET: Profiles
         public ActionResult Index()
         {
-            return View("~/Views/Home/About.cshtml"); // Testing...
+            return View();
         }
 
-        // GET: Profiles/Details/5
-        public ActionResult Details(int? id)
+        // Action to launch my profile page where edit, view profile deatils...
+        // NOT DONE, 
+        /*
+         * STUB
+         */ 
+
+        // GET: Profiles/Details/5 ***See comments for changes, needs review
+        public ActionResult Details(int? id) // Test
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest, "Oops! An error occurred whilst processing your request.");
             }
             Profile profile = applicationServices.GetProfile(id);
             if (profile == null)
             {
                 return HttpNotFound();
             }
-            return View(profile);
+            ProfileViewModel profileViewModel = new ProfileViewModel
+            {
+                CurrentProfile = profile,
+                IsThisUser = applicationServices.EnsureIsUserProfile(profile, User),
+                CurrentView = "profile",
+                ProfilePhoto = profile.ProfileImage.FileName,
+                MotorcyclePhoto = profile.MotorcycleImage.FileName
+            };
+
+            ViewBag.Partial = "Details"; //To check if it's edit or view section in Profile section of My profile page
+
+            return View(profileViewModel); // Changed
         }
 
         // GET: Profiles/Create
@@ -68,13 +83,23 @@ namespace MotorcycleNewb.Controllers
             if (ModelState.IsValid)
             {
                 ViewBag.AccountId = applicationServices.GetCurrentAccountId(User);
+                Image profilePic = new Image { FileName = "../../Content/images/helmet-avatar.png" };
+                profile.ProfileImage = profilePic;
+                Image mcPic = new Image { FileName = "../../Content/images/motorcycle-image-avatar.png" };
+                profile.MotorcycleImage = mcPic;
                 applicationServices.Add(profile);
                 applicationServices.Save();
                 return RedirectToAction("Index", "Wall"); // Redirect to Wall (profile page) following profile creation
             }
-            //ViewBag.AccountId = applicationServices.GetCurrentAccountId(User);
+            //ViewBag.AccountId = applicationServices.GetCurrentAccountId(User); // Delete in final clean up...
             return View(profile);
         }
+
+        /*
+         * TODO - Complete CRUD operations for profile details...
+         * TODO - Add Change and upload image operations...
+         */
+
         /*
         // GET: Profiles/Edit/5
         public ActionResult Edit(int? id)

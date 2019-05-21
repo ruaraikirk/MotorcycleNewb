@@ -10,11 +10,13 @@ namespace MotorcycleNewb.Models.DataAccessLayer
     {
         public ApplicationDbContext ApplicationDb { get; set; }
         public IRepository<Profile> Profiles { get; set; }
+        public IRepository<Image> Images { get; set; }
 
         public UnitOfWork(ApplicationDbContext db)
         {
             ApplicationDb = db;
             Profiles = new Repository<Profile>(ApplicationDb);
+            Images = new Repository<Image>(ApplicationDb);
         }
         public void Dispose()
         {
