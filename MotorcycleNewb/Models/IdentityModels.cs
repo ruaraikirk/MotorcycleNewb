@@ -29,5 +29,11 @@ namespace MotorcycleNewb.Models
         {
             return new ApplicationDbContext();
         }
+
+        // DbSet property for each model to be saved
+
+        public DbSet<Profile> Profiles { get; set; }
+        public DbSet<Image> Images { get; set; }
+        public System.Data.Entity.DbSet<MotorcycleNewb.Models.ProfileViewModel> ProfileViewModels { get; set; }
     }
 }
