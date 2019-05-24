@@ -1,0 +1,29 @@
+﻿@model MotorcycleNewb.Models.ProfileViewModel
+
+@{
+    ViewBag.Title = "ChangeMotorcycleImage";
+}
+
+<h2>ChangeMotorcycleImage</h2>
+
+@using (Html.BeginForm("ChangeMotorcycleImage", "Profiles", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+
+
+    <div class="col-md-7">
+
+        <div class="form-group">
+
+            <div>
+
+                <input accept="image/x-png, image/gif, image/jpeg" type="file" name="upload" />
+
+            </div>
+        </div>
+        <div class="form-group">
+            <div>
+                <input type="submit" value="Save" class="btn btn-info" />
+            </div>
+        </div>
+    </div>
+}
