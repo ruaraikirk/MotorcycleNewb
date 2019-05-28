@@ -11,6 +11,8 @@ namespace MotorcycleNewb.Models.DataAccessLayer
         IRepository<Profile> Profiles { get; set; }
         IRepository<Image> Images { get; set; }
         //ToDo
+        IRepository<Comment> Comments { get; set; }
+        IRepository<Post> Posts { get; set; }
 
         void Update(Profile element);
         void Delete(Profile element);

@@ -22,5 +22,8 @@ namespace MotorcycleNewb.Models
         public string ProfilePhoto { get; set; }
 
         public string MotorcyclePhoto { get; set; }
+
+        public IEnumerable<Post> Posts { get; set; }
+        public IEnumerable<Comment> Comments { get; set; }
     }
 }

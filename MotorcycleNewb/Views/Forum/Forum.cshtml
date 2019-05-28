@@ -1,0 +1,24 @@
+﻿@model MotorcycleNewb.Models.ProfileViewModel
+
+@{
+    ViewBag.Title = "Forum";
+}
+
+<h2>Forum</h2>
+
+<div id="activity" class="col-md-7">
+    @if (Model.IsThisUser)
+    {
+        using (Html.BeginForm("UploadPost", "Forum", FormMethod.Post, new { @class = "form-write-post" }))
+        {
+            @Html.AntiForgeryToken()
+            <section>
+                @Html.TextArea("Content", "", 3, 20, new { @class = "form-control", @placeholder = "Ask the community!" })
+                @Html.Hidden("page", Model.CurrentView)
+                <input type="submit" value="Post" class="btn btn-info" />
+            </section>
+        }
+    }
+
+    @Html.Partial("PostComments", Model.Posts, new ViewDataDictionary { { "Domain", Model.CurrentView } })
+</div>
