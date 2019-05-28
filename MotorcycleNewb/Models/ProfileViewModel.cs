@@ -9,7 +9,7 @@ namespace MotorcycleNewb.Models
     public class ProfileViewModel
     {
         [Key]
-        public Guid CurrAccId { get; set; } // REquired to avoid errors relating to entity not having a key attribute...?
+        public Guid CurrAccId { get; set; } // Required to avoid errors relating to entity not having a key attribute...?
 
         public Profile CurrentProfile { get; set; }
 

@@ -284,6 +284,8 @@
     <Content Include="Views\Profiles\Edit.cshtml" />
     <Content Include="Views\Profiles\Index.cshtml" />
     <Content Include="Views\Wall\Index.cshtml" />
+    <Content Include="Views\Profiles\ChangeProfileImage.cshtml" />
+    <Content Include="Views\Profiles\ChangeMotorcycleImage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
