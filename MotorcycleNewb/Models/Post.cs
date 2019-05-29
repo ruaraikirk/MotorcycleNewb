@@ -8,7 +8,7 @@ namespace MotorcycleNewb.Models
     public class Post
     {
         public int PostId { get; set; }
-        public string Content { get; set; }
+        public string PostContent { get; set; }
         public DateTime Timestamp { get; set; }
         public int? ProfileId { get; set; }
 

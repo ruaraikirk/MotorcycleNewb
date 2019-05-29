@@ -1,5 +1,11 @@
 ﻿@model IEnumerable<MotorcycleNewb.Models.Post>
 
+@{
+    ViewBag.Title = "Lurker";
+}
+
+<h2>Lurker</h2>
+
 <div id="posts-wrapper" class="commment-container">
     <ul id="comments-list" class="comments-list">
         @foreach (var item in Model)
@@ -26,20 +32,7 @@
                                 @item.Comments.Count Comments
                             </a>
                         </div>
-                        <div class="write-comment">
-                            @using (Html.BeginForm("UploadComment", "Forum", FormMethod.Post))
-                            {
-                                @Html.AntiForgeryToken()
 
-                                @Html.Hidden("PostId", item.PostId)
-                                @Html.TextArea("CommentContent", "", new { @class = "form-control", @placeholder = "Leave a comment" })
-                                @Html.Hidden("page", ViewData["Domain"])
-                                <button type="submit" value="Comment" class="btn btn-info comment-btn">
-                                    <i class="fa fa-reply"></i>
-                                </button>
-
-                            }
-                        </div>
                     </div>
                 </div>
                 <ul class="collapse comments-list reply-list reply-list-@item.PostId">

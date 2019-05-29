@@ -289,8 +289,9 @@
     <Content Include="Views\Wall\Index.cshtml" />
     <Content Include="Views\Profiles\ChangeProfileImage.cshtml" />
     <Content Include="Views\Profiles\ChangeMotorcycleImage.cshtml" />
-    <Content Include="Views\Forum\Forum.cshtml" />
+    <Content Include="Views\Forum\Member.cshtml" />
     <Content Include="Views\Forum\PostComments.cshtml" />
+    <Content Include="Views\Forum\Lurker.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -9,7 +9,7 @@ namespace MotorcycleNewb.Models
     public class Comment
     {
         public int CommentId { get; set; }
-        public string Content { get; set; }
+        public string CommentContent { get; set; }
         public DateTime Timestamp { get; set; }
 
         public int? ProfileId { get; set; }

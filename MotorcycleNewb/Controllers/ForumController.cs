@@ -15,9 +15,16 @@ namespace MotorcycleNewb.Controllers
 
         private ApplicationServices db = new ApplicationServices(new UnitOfWork(new ApplicationDbContext()));
 
-        public ActionResult Forum(int? id)
+        public ActionResult Lurker()
         {
-            //In the my profile page, shows activity for the current user and also the text area to upload new post
+
+            IEnumerable<Post> posts = db.GetPosts().OrderByDescending(p => p.Timestamp);
+
+            return View(posts);
+        }
+
+        public ActionResult Member(int? id)
+        {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -28,15 +35,15 @@ namespace MotorcycleNewb.Controllers
                 return HttpNotFound();
             }
 
-            //Get a collections of post by user id. Shows only the posts written by the current user
+            // Get a collections of all posts
             IEnumerable<Post> posts = db.GetPosts().OrderByDescending(p => p.Timestamp);
 
-            //Instantiate a ProfileViewModel with some properties
+            // Instantiate a ProfileViewModel with some properties
             ProfileViewModel vm = new ProfileViewModel()
             {
                 CurrentProfile = profile,
                 Posts = posts,
-                CurrentView = "Forum",
+                CurrentView = "Member",
                 IsThisUser = db.EnsureIsUserProfile(profile, User),
                 ProfilePhoto = profile.ProfileImage.FileName
             };
@@ -52,20 +59,20 @@ namespace MotorcycleNewb.Controllers
                 wvm.Photo = user.ProfilePic.FileName;
             }
             */
-            return View(vm);
+            return View();
         }
 
         /*POSTS*/
         [HttpPost]
         //[Route("Forum/UploadPost")]
         [ValidateAntiForgeryToken]
-        public ActionResult UploadPost([Bind(Include = "PostId, Content, Timestamp, ProfileId")]Post post, string page)
+        public ActionResult UploadPost([Bind(Include = "PostId, PostContent, Timestamp, ProfileId")]Post post, string page)
         {
 
             post.ProfileId = db.GetProfile(db.GetCurrentAccountId(User)).ProfileId;
             post.Timestamp = DateTime.Now;
 
-            if (ModelState.IsValid && !string.IsNullOrWhiteSpace(post.Content))
+            if (ModelState.IsValid && !string.IsNullOrWhiteSpace(post.PostContent))
             {
                 db.Add(post);
                 db.Save();
@@ -76,19 +83,19 @@ namespace MotorcycleNewb.Controllers
             {
                 return RedirectToAction("Forum", new { id = post.ProfileId });
             }*/
-            return RedirectToAction("Forum", new { id = post.ProfileId });
+            return RedirectToAction("Member", new { id = post.ProfileId });
         }
 
         [HttpPost]
         //[Route("Forum/UploadComment")]
         [ValidateAntiForgeryToken]
-        public ActionResult UploadComment([Bind(Include = "CommentId, Content, Timestamp, ProfileId, PostId")]Comment comment, string page)
+        public ActionResult UploadComment([Bind(Include = "CommentId, CommentContent, Timestamp, ProfileId, PostId")]Comment comment, string page)
         {
 
             comment.ProfileId = db.GetProfile(db.GetCurrentAccountId(User)).ProfileId;
             comment.Timestamp = DateTime.Now;
 
-            if (ModelState.IsValid && !string.IsNullOrWhiteSpace(comment.Content))
+            if (ModelState.IsValid && !string.IsNullOrWhiteSpace(comment.CommentContent))
             {
                 db.Add(comment);
                 db.Save();
@@ -97,7 +104,7 @@ namespace MotorcycleNewb.Controllers
             {
                 return RedirectToAction("Activity", new { id = comment.ProfileId });
             }*/
-            return RedirectToAction("Forum", new { id = comment.ProfileId });
+            return RedirectToAction("Member", new { id = comment.ProfileId });
         }
     }
 }
