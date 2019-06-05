@@ -59,7 +59,7 @@ namespace MotorcycleNewb.Controllers
                 wvm.Photo = user.ProfilePic.FileName;
             }
             */
-            return View();
+            return View(vm);
         }
 
         /*POSTS*/
