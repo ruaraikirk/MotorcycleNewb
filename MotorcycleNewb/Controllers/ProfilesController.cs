@@ -8,6 +8,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
 using MotorcycleNewb.Models;
 using MotorcycleNewb.Models.DataAccessLayer;
 using MotorcycleNewb.ServiceLayer;
@@ -99,23 +100,36 @@ namespace MotorcycleNewb.Controllers
 
         /*
          * TODO - Complete CRUD operations for profile details...
-         * TODO - Add Change and upload image operations...
          */
 
-        /*
+        
         // GET: Profiles/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest, "An error occurred whilst processing your request.");
             }
-            Profile profile = db.Profiles.Find(id);
-            if (profile == null)
+            Profile profile = applicationServices.GetProfile(id);
+            bool isUser = applicationServices.EnsureIsUserProfile(profile, User);
+            if (profile == null || !isUser)
             {
                 return HttpNotFound();
             }
-            return View(profile);
+
+            ProfileViewModel vm = new ProfileViewModel
+            {
+                CurrentProfile = profile,
+                CurrentView = "profile",
+                IsThisUser = isUser,
+                ProfilePhoto = profile.ProfileImage.FileName,
+                MotorcyclePhoto = profile.MotorcycleImage.FileName
+            };
+
+            ViewBag.Partial = "Edit";
+
+            ViewBag.ApplicationId = applicationServices.GetCurrentAccountId(User);
+            return View(vm);
         }
 
         // POST: Profiles/Edit/5
@@ -123,17 +137,18 @@ namespace MotorcycleNewb.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ProfileId,FirstName,LastName,City")] Profile profile)
+        public ActionResult Edit([Bind(Include = "CurrentProfile")] ProfileViewModel vm)
         {
+            ViewBag.AccountId = applicationServices.GetCurrentAccountId(User);
             if (ModelState.IsValid)
             {
-                db.Entry(profile).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                applicationServices.Edit(vm.CurrentProfile);
+                applicationServices.Save();
+                return RedirectToAction("Index", "Wall");
+
             }
-            return View(profile);
+            return RedirectToAction("Edit", new { id = vm.CurrentProfile.ProfileId });
         }
-        */
 
         // *Profile* image edit
         // GET: Profiles/ChangeProfileImage/5
@@ -281,7 +296,7 @@ namespace MotorcycleNewb.Controllers
             return View("ChangeMotorcycleImage", vm);
         }
         // END Motorcycle image edit
-        /*
+        
         // GET: Profiles/Delete/5
         public ActionResult Delete(int? id)
         {
@@ -289,7 +304,7 @@ namespace MotorcycleNewb.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Profile profile = db.Profiles.Find(id);
+            Profile profile = applicationServices.GetProfile(id);
             if (profile == null)
             {
                 return HttpNotFound();
@@ -302,12 +317,15 @@ namespace MotorcycleNewb.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Profile profile = db.Profiles.Find(id);
-            db.Profiles.Remove(profile);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            Profile profile = applicationServices.GetProfile(id);
+            applicationServices.Remove(profile);
+            applicationServices.Save();
+
+            // TODO Deleting from ASP.NET Identity
+            return RedirectToAction("LogOff", "Account"); // TOTO Fix Redirect to log user out and return to home page.
+            // See https://stackoverflow.com/questions/24318341/how-to-log-off-from-another-action for examples.
         }
-        */
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
