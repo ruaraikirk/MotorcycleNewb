@@ -9,7 +9,7 @@
 <div id="activity" class="col-md-7">
     @if (Model.IsThisUser)
     {
-        using (Html.BeginForm("UploadPost", "Member", FormMethod.Post, new { @class = "form-write-post" }))
+        using (Html.BeginForm("UploadPost", "Forum", FormMethod.Post, new { @class = "form-write-post" }))
         {
             @Html.AntiForgeryToken()
             <section>
