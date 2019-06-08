@@ -2,13 +2,14 @@
 
 @{
     ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MemberLayout.cshtml";
 }
 
-<h2>View</h2>
+<h2>Profile Page</h2>
 
 <div class="container">
     <div class="row">
-        <div class="col-md-3 hidden-xs hidden-sm">
+        <div class="col-md-12 col-sm-12">
             <table>
                 <tr>
                     <td>
@@ -47,7 +48,7 @@
                         Profile Picture:
                     </td>
                     <td>
-                        <img src='@Model.CurrentProfile.ProfileImage.FileName' 
+                        <img src='@Model.CurrentProfile.ProfileImage.FileName'
                              style='border-radius:50%;width:auto;height:300px;' />
                     </td>
                 </tr>
@@ -62,6 +63,6 @@
                 </tr>
             </table>
         </div>
+        <!--inclusion of posts by user requires another controller and partial view...-->
     </div>
 </div>
-

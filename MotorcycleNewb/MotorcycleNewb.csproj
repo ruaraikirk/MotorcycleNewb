@@ -226,6 +226,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Images\CR-1.jpg" />
     <Content Include="Content\Images\helmet-avatar.png" />
     <Content Include="Content\Images\motorcycle-image-avatar.png" />
     <Content Include="favicon.ico" />
@@ -287,12 +288,13 @@
     <Content Include="Views\Profiles\Details.cshtml" />
     <Content Include="Views\Profiles\Edit.cshtml" />
     <Content Include="Views\Profiles\Index.cshtml" />
-    <Content Include="Views\Wall\Index.cshtml" />
     <Content Include="Views\Profiles\ChangeProfileImage.cshtml" />
     <Content Include="Views\Profiles\ChangeMotorcycleImage.cshtml" />
     <Content Include="Views\Forum\Member.cshtml" />
     <Content Include="Views\Forum\PostComments.cshtml" />
     <Content Include="Views\Forum\Lurker.cshtml" />
+    <Content Include="Views\Shared\_MemberLayout.cshtml" />
+    <Content Include="Views\Wall\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
