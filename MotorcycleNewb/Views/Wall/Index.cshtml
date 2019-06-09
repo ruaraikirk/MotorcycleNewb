@@ -5,64 +5,16 @@
     Layout = "~/Views/Shared/_MemberLayout.cshtml";
 }
 
-<h2>Profile Page</h2>
-
 <div class="container">
-    <div class="row">
-        <div class="col-md-12 col-sm-12">
-            <table>
-                <tr>
-                    <td>
-                        @Html.DisplayFor(m => m.CurrentProfile.FirstName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(m => m.CurrentProfile.LastName)
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        @Html.LabelFor(m => m.CurrentProfile.City)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(m => m.CurrentProfile.City)
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        @Html.LabelFor(m => m.CurrentProfile.MotorcycleMake)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(m => m.CurrentProfile.MotorcycleMake)
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        @Html.LabelFor(m => m.CurrentProfile.MotorcycleModel)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(m => m.CurrentProfile.MotorcycleModel)
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Profile Picture:
-                    </td>
-                    <td>
-                        <img src='@Model.CurrentProfile.ProfileImage.FileName'
-                             style='border-radius:50%;width:auto;height:300px;' />
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Motorcycle Picture:
-                    </td>
-                    <td>
-                        <img src='@Model.CurrentProfile.MotorcycleImage.FileName'
-                             style='border-radius:50%;width:auto;height:300px;' />
-                    </td>
-                </tr>
-            </table>
+    <div class="fb-profile">
+        <img align="left" class="fb-image-lg" <img src='@Model.CurrentProfile.MotorcycleImage.FileName' alt="Profile image example" />
+        <img align="left" class="fb-image-profile thumbnail" src='@Model.CurrentProfile.ProfileImage.FileName' alt="Profile image example" />
+        <div class="fb-profile-text">
+            <h1>@Html.DisplayFor(m => m.CurrentProfile.FirstName) @Html.DisplayFor(m => m.CurrentProfile.LastName)</h1>
+            <p><strong>Current City:</strong></p>
+            <p>@Html.DisplayFor(m => m.CurrentProfile.City)</p>
+            <p><strong>Motorcycle:</strong></p>
+            <p>@Html.DisplayFor(m => m.CurrentProfile.MotorcycleMake) @Html.DisplayFor(m => m.CurrentProfile.MotorcycleModel)</p>
         </div>
-        <!--inclusion of posts by user requires another controller and partial view...-->
     </div>
 </div>

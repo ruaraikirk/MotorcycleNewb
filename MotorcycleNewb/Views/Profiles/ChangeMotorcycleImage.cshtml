@@ -2,17 +2,18 @@
 
 @{
     ViewBag.Title = "ChangeMotorcycleImage";
+    Layout = "~/Views/Shared/_MemberLayout.cshtml";
 }
 
-<h2>ChangeMotorcycleImage</h2>
+<h2 class="col-md-offset-4">Change Motorcycle Photo</h2>
 
 @using (Html.BeginForm("ChangeMotorcycleImage", "Profiles", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
 
 
-    <div class="col-md-7">
+    <div class="col-md-12">
 
-        <div class="form-group">
+        <div class="form-group col-md-offset-4">
 
             <div>
 
@@ -20,9 +21,9 @@
 
             </div>
         </div>
-        <div class="form-group">
+        <div class="form-group col-md-offset-4">
             <div>
-                <input type="submit" value="Save" class="btn btn-info" />
+                <input type="submit" value="Save" class="btn btn-default" />
             </div>
         </div>
     </div>
