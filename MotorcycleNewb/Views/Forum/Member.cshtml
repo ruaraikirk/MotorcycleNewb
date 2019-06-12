@@ -2,11 +2,19 @@
 
 @{
     ViewBag.Title = "Member";
+    Layout = "~/Views/Shared/_MemberLayout.cshtml";
 }
 
-<h2>Forum</h2>
+<div class="jumbotron">
+    <h1 class="display-3">Welcome to the MotorcycleNewb Forum!</h1>
+    <p class="lead">Please abide by community rules. This forum is reviewed by moderators. Please click the button below for further details.</p>
+    <hr class="my-4">
+    <p class="lead">
+        <a class="btn btn-primary btn-lg" href="/Home/About" role="button">About</a>
+    </p>
+</div>
 
-<div id="activity" class="col-md-7">
+<div class="col-md-12">
     @if (Model.IsThisUser)
     {
         using (Html.BeginForm("UploadPost", "Forum", FormMethod.Post, new { @class = "form-write-post" }))
@@ -15,7 +23,7 @@
             <section>
                 @Html.TextArea("PostContent", "", 3, 20, new { @class = "form-control", @placeholder = "Ask the community!" })
                 @Html.Hidden("page", Model.CurrentView)
-                <input type="submit" value="Post" class="btn btn-info" />
+                <input type="submit" value="Post" class="btn btn-primary" />
             </section>
         }
     }

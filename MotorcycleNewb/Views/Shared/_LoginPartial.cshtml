@@ -5,12 +5,20 @@
     {
     @Html.AntiForgeryToken()
 
-    <ul class="nav navbar-nav navbar-right">
-        <li>
-            @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
-        </li>
-        <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
-    </ul>
+<ul class="nav navbar-nav navbar-right">
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Account Settings</a>
+        <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 40px, 0px);">
+            <a class="btn btn-primary btn-sm" href="@Url.Action("Edit", "Profiles", new { id = Model.IsThisUser ? Model.CurrentProfile.ProfileId : Model.User.ProfileId })">Edit Profile Details</a>
+            <a class="btn btn-primary btn-sm" href="@Url.Action("ChangeProfileImage", "Profiles", new { id = Model.IsThisUser ? Model.CurrentProfile.ProfileId : Model.User.ProfileId })">Change Profile Photo</a>
+            <a class="btn btn-primary btn-sm" href="@Url.Action("ChangeMotorcycleImage", "Profiles", new { id = Model.IsThisUser ? Model.CurrentProfile.ProfileId : Model.User.ProfileId })">Change Motorcycle Photo</a>
+            <!--<a class="btn btn-primary btn-sm" href="@Url.Action("Index", "Manage")>Change Password</a>-->
+            <a class="btn btn-primary btn-sm text-danger" href="@Url.Action("Delete", "Profiles", new { id = Model.IsThisUser ? Model.CurrentProfile.ProfileId : Model.User.ProfileId })">Delete Profile</a>
+            <div class="divider"></div>
+            <a class="btn btn-primary btn-sm" href="javascript:document.getElementById('logoutForm').submit()">Log out</a>
+        </div>
+    </li>
+</ul>
     }
 }
 else

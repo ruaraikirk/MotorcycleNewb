@@ -22,3 +22,216 @@ select,
 textarea {
     max-width: 280px;
 }
+
+
+
+/*
+ * Profile Page
+ */
+
+.fb-profile img.fb-image-lg {
+    z-index: 0;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.fb-image-profile {
+    margin: -90px 10px 0px 50px;
+    z-index: 9;
+    width: 20%;
+}
+
+@media (max-width:768px) {
+
+    .fb-profile-text > h1 {
+        font-weight: 700;
+        font-size: 16px;
+    }
+
+    .fb-image-profile {
+        margin: -45px 10px 0px 25px;
+        z-index: 9;
+        width: 20%;
+    }
+}
+
+/*
+ * Forum Posts & Comments
+ */
+
+div.comment-container {
+    background: #1C1E22;
+}
+/*The overall list*/
+#comments-list {
+    padding: 0;
+}
+/*Each sublists either posts or comments*/
+.comments-list {
+    margin-top: 30px;
+    position: relative;
+    list-style-type: none;
+}
+
+/*Only comments list*/
+.reply-list:before, .reply-list:after {
+    display: none;
+}
+
+.reply-list {
+    clear: both;
+    margin-top: 15px;
+}
+/*Any element in the posts and comments lists*/
+.comments-list li {
+    margin-bottom: 15px;
+    display: block;
+    position: relative;
+}
+
+    .comments-list li:after {
+        content: '';
+        display: block;
+        clear: both;
+        height: 0;
+        width: 0;
+    }
+
+/*********************
+         Avatar
+ *******************/
+.comments-list .comment-avatar {
+    width: 50px;
+    height: 50px;
+    z-index: 99;
+    float: left;
+    border: 3px solid #272B30;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+    .comments-list .comment-avatar img {
+        width: 100%;
+        height: 100%;
+    }
+
+.reply-list .comment-avatar {
+    width: 30px;
+    height: 30px;
+}
+
+.comment-main-level:after {
+    content: '';
+    width: 0;
+    height: 0;
+    display: block;
+    clear: both;
+}
+/**************************
+         Box Comments
+ *************************/
+.comments-list .comment-box {
+    position: relative;
+}
+/*First section of the comment box where Name is*/
+.comment-box .comment-head {
+    background: #1C1E22;
+    padding: 10px 12px;
+    border-bottom: 1px solid #798187;
+    overflow: hidden;
+    -webkit-border-radius: 4px 4px 0 0;
+    -moz-border-radius: 4px 4px 0 0;
+    border-radius: 4px 4px 0 0;
+}
+
+.comment-box .comment-name {
+    color: white;
+    font-size: 14px;
+    font-weight: 700;
+    float: left;
+    margin-left: 10px;
+}
+/*Date*/
+.comment-box .comment-head span {
+    float: right;
+    color: #999;
+    font-size: 13px;
+    position: relative;
+    top: 9px;
+}
+/*The content of the post*/
+.comment-box .comment-content {
+    background: #272B30;
+    padding: 12px;
+    font-size: 15px;
+    -webkit-border-radius: 0 0 4px 4px;
+    -moz-border-radius: 0 0 4px 4px;
+    border-radius: 0 0 4px 4px;
+}
+/*The comments link to show or hide the comments of a post*/
+.comments-collapsible:hover, .comments-collapsible:focus, .comments-collapsible:active, .comments-collapsible:visited, .comments-collapsible {
+    text-decoration: underline !important;
+    color: white;
+}
+
+.comments-collapsible {
+    margin-right: 2px;
+}
+
+.collapse-footer {
+    background-color: #1C1E22;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+/*Text field to write new comment*/
+.write-comment {
+    width: 100%;
+}
+
+    .write-comment form {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        max-height: 40px;
+    }
+/*The content of new comment*/
+textarea#Text {
+    max-width: 70%;
+    resize: none;
+}
+
+.comment-btn {
+    width: 30%;
+}
+
+.comment-main-level {
+    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.15);
+    -moz-box-shadow: 0 1px 1px rgba(0,0,0,0.15);
+    box-shadow: 0 1px 1px rgba(0,0,0,0.15);
+    border-radius: 0 0 4px 4px;
+    border: 1px solid #272B30;
+}
+/*The text field where to write post. Sited at the top of the wall*/
+textarea {
+    resize: none;
+    max-width: 100%;
+}
+/**Upload post button*/
+.form-write-post section input {
+    width: 30%;
+    align-self: flex-end;
+}
+
+.form-write-post section {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.utility-links, .utility-links:focus, .utility-links:visited, .utility-links:hover {
+    text-decoration: none !important;
+}
+

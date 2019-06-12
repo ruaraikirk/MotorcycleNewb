@@ -4,9 +4,17 @@
     ViewBag.Title = "Lurker";
 }
 
-<h2>Lurker</h2>
+<div class="jumbotron">
+    <h1 class="display-3">Hello, forum lurker!</h1>
+    <p class="lead">This is where the MotorcycleNewb community get together to help each other out and hare their experiences.</p>
+    <hr class="my-4">
+    <p>Use the button below to sign up and join the conversation!</p>
+    <p class="lead">
+        <a class="btn btn-primary btn-lg" href="/Account/Register" role="button">Register</a>
+    </p>
+</div>
 
-<div id="posts-wrapper" class="commment-container">
+<div class="commment-container">
     <ul id="comments-list" class="comments-list">
         @foreach (var item in Model)
         {

@@ -1,69 +1,69 @@
 ﻿@model IEnumerable<MotorcycleNewb.Models.Post>
 
-<div id="posts-wrapper" class="commment-container">
-    <ul id="comments-list" class="comments-list">
-        @foreach (var item in Model)
-        {
-            <li>
-                <div class="comment-main-level">
-                    <div class="comment-box">
-                        <div class="comment-head">
-                            <div class="comment-avatar">
-                                <img src="@item.Profile.ProfileImage.FileName" height="42" width="42"/>
+    <div id="posts-wrapper" class="commment-container">
+        <ul id="comments-list" class="comments-list">
+            @foreach (var item in Model)
+            {
+                <li>
+                    <div class="comment-main-level">
+                        <div class="comment-box">
+                            <div class="comment-head">
+                                <div class="comment-avatar">
+                                    <img src="@item.Profile.ProfileImage.FileName" height="42" width="42" />
+                                </div>
+                                <h6 class="comment-name">@item.Profile.FirstName @item.Profile.LastName</h6>
+                                <span>@item.Timestamp.ToString("dd MMM yy HH:mm")</span>
+
                             </div>
-                            <h6 class="comment-name">@item.Profile.FirstName @item.Profile.LastName</h6>
-                            <span>@item.Timestamp.ToString("dd MMM yy HH:mm")</span>
+                            <div class="comment-content">
+                                @item.PostContent
+                            </div>
 
                         </div>
-                        <div class="comment-content">
-                            @item.PostContent
-                        </div>
+                        <div>
+                            <div class="collapse-footer">
+                                <a class="comments-collapsible" data-toggle="collapse" href=".reply-list-@item.PostId" aria-expanded="false">
+                                    @item.Comments.Count Comments
+                                </a>
+                            </div>
+                            <div class="write-comment">
+                                @using (Html.BeginForm("UploadComment", "Forum", FormMethod.Post))
+                                {
+                                    @Html.AntiForgeryToken()
 
-                    </div>
-                    <div>
-                        <div class="collapse-footer">
-                            <a class="comments-collapsible" data-toggle="collapse" href=".reply-list-@item.PostId" aria-expanded="false">
-                                @item.Comments.Count Comments
-                            </a>
-                        </div>
-                        <div class="write-comment">
-                            @using (Html.BeginForm("UploadComment", "Forum", FormMethod.Post))
-                            {
-                                @Html.AntiForgeryToken()
+                                    @Html.Hidden("PostId", item.PostId)
+                                    @Html.TextArea("CommentContent", "", new { @class = "form-control", @placeholder = "Leave a comment" })
+                                    @Html.Hidden("page", ViewData["Domain"])
+                                    <button type="submit" value="Comment" class="btn btn-primary comment-btn">
+                                        Comment
+                                    </button>
 
-                                @Html.Hidden("PostId", item.PostId)
-                                @Html.TextArea("CommentContent", "", new { @class = "form-control", @placeholder = "Leave a comment" })
-                                @Html.Hidden("page", ViewData["Domain"])
-                                <button type="submit" value="Comment" class="btn btn-info comment-btn">
-                                    <i class="fa fa-reply"></i>
-                                </button>
-
-                            }
+                                }
+                            </div>
                         </div>
                     </div>
-                </div>
-                <ul class="collapse comments-list reply-list reply-list-@item.PostId">
+                    <ul class="collapse comments-list reply-list reply-list-@item.PostId">
 
-                    @foreach (var comm in item.Comments)
-                    {
-                        <li>
-                            <div class="comment-box">
-                                <div class="comment-head">
-                                    <div class="comment-avatar">
-                                        <img src="@comm.Profile.ProfileImage.FileName" height="42" width="42"/>
+                        @foreach (var comm in item.Comments)
+                        {
+                            <li>
+                                <div class="comment-box">
+                                    <div class="comment-head">
+                                        <div class="comment-avatar">
+                                            <img src="@comm.Profile.ProfileImage.FileName" height="42" width="42" />
+                                        </div>
+                                        <h6 class="comment-name">@comm.Profile.FirstName @comm.Profile.LastName</h6>
+                                        <span>@comm.Timestamp.ToString("dd MMM yy HH:mm")</span>
+
                                     </div>
-                                    <h6 class="comment-name">@comm.Profile.FirstName @comm.Profile.LastName</h6>
-                                    <span>@comm.Timestamp.ToString("dd MMM yy HH:mm")</span>
-
+                                    <div class="comment-content">
+                                        @comm.CommentContent
+                                    </div>
                                 </div>
-                                <div class="comment-content">
-                                    @comm.CommentContent
-                                </div>
-                            </div>
-                        </li>
-                    }
-                </ul>
-            </li>
-        }
-    </ul>
-</div>
+                            </li>
+                        }
+                    </ul>
+                </li>
+            }
+        </ul>
+    </div>

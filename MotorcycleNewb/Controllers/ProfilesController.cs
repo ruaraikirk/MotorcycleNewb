@@ -304,7 +304,7 @@ namespace MotorcycleNewb.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Profile profile = applicationServices.GetProfile(id);
+            Profile profile = applicationServices.GetProfile(id);  // TODO update to ProfileViewModel
             if (profile == null)
             {
                 return HttpNotFound();
@@ -317,7 +317,7 @@ namespace MotorcycleNewb.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Profile profile = applicationServices.GetProfile(id);
+            Profile profile = applicationServices.GetProfile(id); // TODO update to ProfileViewModel
             applicationServices.Remove(profile);
             applicationServices.Save();
 
