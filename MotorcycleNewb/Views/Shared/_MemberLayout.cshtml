@@ -21,7 +21,7 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="@Url.Action("Member", "Forum", new { id = Model.IsThisUser ? Model.CurrentProfile.ProfileId : Model.User.ProfileId })">Forum!</a></li>
+                    <li><a href="@Url.Action("Member", "Forum", new { id = Model.IsThisUser ? Model.CurrentProfile.ProfileId : Model.User.ProfileId })">Forum</a></li>
                     <li>@Html.ActionLink("FAQ", "About", "Home")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
