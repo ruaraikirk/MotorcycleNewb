@@ -5,12 +5,17 @@ using System.Web;
 using System.Web.Mvc;
 using System.Data.SqlClient;
 using System.Configuration;
+using MotorcycleNewb.ServiceLayer;
+using MotorcycleNewb.Models.DataAccessLayer;
+using MotorcycleNewb.Models;
 
 namespace MotorcycleNewb.Controllers
 {
     public class LocatorController : Controller
     {
-        // GET: Home
+        private ApplicationServices applicationServices = new ApplicationServices(new UnitOfWork(new ApplicationDbContext()));
+
+        // GET: Locator Map
         public ActionResult Index()
         {
             string markers = "[";
@@ -37,7 +42,20 @@ namespace MotorcycleNewb.Controllers
 
             markers += "];";
             ViewBag.Markers = markers;
-            return View();
+
+            // Requried in order to avoid "Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: 'Cannot perform runtime binding on a null reference'" error...
+            var accountId = applicationServices.GetCurrentAccountId(User);
+            Profile profile = applicationServices.GetProfile(accountId);
+
+            ProfileViewModel user = new ProfileViewModel()
+            {
+                CurrAccId = accountId, //Test
+                CurrentProfile = profile,
+                IsThisUser = applicationServices.EnsureIsUserProfile(profile, User)
+            };
+
+
+            return View(user);
         }
     }
 }

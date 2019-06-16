@@ -227,9 +227,12 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Images\biker_buddy.jpg" />
     <Content Include="Content\Images\CR-1.jpg" />
     <Content Include="Content\Images\helmet-avatar.png" />
     <Content Include="Content\Images\motorcycle-image-avatar.png" />
+    <Content Include="Content\Images\motorcycle_group.jpg" />
+    <Content Include="Content\Images\motorcycle_solo.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -297,6 +300,7 @@
     <Content Include="Views\Shared\_MemberLayout.cshtml" />
     <Content Include="Views\Wall\Index.cshtml" />
     <Content Include="Views\Locator\Index.cshtml" />
+    <Content Include="Views\Shared\_MemberNavBar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

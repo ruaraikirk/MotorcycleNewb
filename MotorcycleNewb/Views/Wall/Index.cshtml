@@ -7,14 +7,12 @@
 
 <div class="container">
     <div class="fb-profile">
-        <img align="left" class="fb-image-lg" <img src='@Model.CurrentProfile.MotorcycleImage.FileName' alt="Profile image example" />
+        <img align="left" class="fb-image-lg" src='@Model.CurrentProfile.MotorcycleImage.FileName' alt="Profile image example" />
         <img align="left" class="fb-image-profile thumbnail" src='@Model.CurrentProfile.ProfileImage.FileName' alt="Profile image example" />
         <div class="fb-profile-text">
             <h1>@Html.DisplayFor(m => m.CurrentProfile.FirstName) @Html.DisplayFor(m => m.CurrentProfile.LastName)</h1>
-            <p><strong>Current City:</strong></p>
-            <p>@Html.DisplayFor(m => m.CurrentProfile.City)</p>
-            <p><strong>Motorcycle:</strong></p>
-            <p>@Html.DisplayFor(m => m.CurrentProfile.MotorcycleMake) @Html.DisplayFor(m => m.CurrentProfile.MotorcycleModel)</p>
+            <p><strong>Current City: </strong>@Html.DisplayFor(m => m.CurrentProfile.City)</p>
+            <p><strong>Motorcycle: </strong>@Html.DisplayFor(m => m.CurrentProfile.MotorcycleMake) @Html.DisplayFor(m => m.CurrentProfile.MotorcycleModel)</p>
         </div>
     </div>
 </div>
