@@ -1,13 +1,205 @@
 ﻿@model MotorcycleNewb.Models.ProfileViewModel
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "FAQs";
     Layout = "~/Views/Shared/_MemberLayout.cshtml";
 }
 
-<h2 class="col-md-offset-4">FAQs about getting into motorcycling:</h2>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="jumbotron">
+                <h1 class="display-3">FAQs about getting into motorcycling</h1>
+                <p class="lead">
+                    Starting out motorcycling riding can be a daunting task. The team at MotorcycleNewb feel your pain!
+                    We've all been there, so below is a collection of information which should serve as a good starting point on your journey.
+                </p>
+                <hr class="my-4">
+                <p>If you have more specific questions, why not ask the community in our Forum!</p>
+                <p class="lead">
+                    <a class="btn btn-primary btn-lg" href="@Url.Action("Member", "Forum", new { id = Model.IsThisUser ? Model.CurrentProfile.ProfileId : Model.User.ProfileId })" role="button">Forum</a>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingOne">
+                        <h4 class="panel-title">
+                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                Why start in the first place?
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                        <div class="panel-body">
+                            <p>
+                                Generally, we like to hide this fact. But, in many ways, it's at the heart of all other reasons: In some way or another motorcycling will make you cooler than everyone else. And deep in their hearts, everyone else will know it.
 
+                                No, it's not very cool to admit such a thing—indeed, part of coolness comes from respectfulness toward those who lack the good fortune of being you— but, that makes it no less true. You don't have to look like Beckham on a Bonneville to achieve this coolness. It happens naturally with all motorized two-wheeled conveyances. As my wife once told me: "When you see someone on a motorcycle, it doesn't matter what kind, you think: 'Oh, that person is on an adventure! I wonder where they're going.'"
 
-<div id="dvMap" style="width: 500px; height: 500px" class="col-md-offset-4"></div>
+                                "You don't think that about someone in a car," she said. "You just think: 'That person is stuck in traffic.'"
+                            </p>
+                            <p>Other benefits include:</p>
+                            <ul>
+                                <li>Commuting is Easier and More Fun</li>
+                                <li>Mother Earth Will Thank You</li>
+                                <li>
+                                    You Meet the Nicest People
+                                </li>
+                                <li>And much much more!</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingTwo">
+                        <h4 class="panel-title">
+                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                What about safety?
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                        <div class="panel-body">
+                            <h3>Motorcycle Safety</h3>
+                            <p>By making safety a top priority, motorcyclists can reduce the chances of death and injury</p>
+
+                            <p>Each week 7 motorcyclists are killed or injured on Irish roads on average*.  Irrespective of who is at fault the motorcyclist will more than likely suffer worst in a collision with another vehicle.  One of the main reasons is that, in a crash, motorcycle and moped users have less protection than drivers or passengers in vehicles.</p>
+
+                            <p>*This is based average figures between 2009 and 2017.  Figures for 2016 and 2017 were provisional at the time of calculation.</p>
+
+                            <p>Appropriate motorcycle training and education  can help you stay safe and enjoy your bike. Trained motorcyclists around the world prove every day that biking can be a fun, safe and satisfying activity. Proper training will include the importance of routine maintenance to ensure that your bike is safe and fit for purpose.</p>
+
+                            <p>Every time you go out on your bike your ultimate aim is to return home safely. Apart from the fact that there may be people who are socially and financially dependent on you, the manner in which you ride may cause unnecessary stress and anxiety to those close to you.  Completing a proper training course and developing a safe and socially responsible attitude would go some way towards alleviating those concerns.</p>
+
+                            <h4>Safety gear</h4>
+
+                            <p>Ensure that the safety helmet and protective clothing that you wear every time you get on your bike has CE or British Kitemark approval standards.</p>
+
+                            <ul>
+                                <li>Jackets and trousers should give you enough protection from impact, abrasion, cold and weather conditions. </li>
+                                <li> Use approved body armour on vulnerable areas such as the back, knees, elbows, shoulders, hips and shins. This should be adjustable so it fits snugly and does not move in a crash.</li>
+                                <li>You should wear a good reflective jacket to make you more visible on the road.</li>
+                                <li>Wear approved protective gloves, and footwear that at least comes above the ankle.</li>
+                            </ul>   
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingThree">
+                        <h4 class="panel-title">
+                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                What motorcycle license should I apply for?
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                        <div class="panel-body">
+                            <h3>Motorcycle licence categories explained</h3>
+                            <p>Depends on your age and the size of motorcycle for which you wish to ride. The following table describes the various motorcycle licence categories and the minimum age requirements.  Please note that there are specific vehicle requirements for taking the practical motorcycle driving test.</p>
+                            <table class="table table-hover">
+                                <tr class="table-active">
+                                    <th scope="col">&nbsp;</th>
+                                    <th scope="col">Licence Category</th>
+                                    <th scope="col">Description of Licence</th>
+                                    <th scope="col">Minimum Age</th>
+                                </tr>
+                                <tr class="table-active">
+                                    <th scope="row"><img src="~/Content/Images/moped.png" /></th>
+                                    <td>AM</td>
+                                    <td>Mopeds</td>
+                                    <td>16 years</td>
+                                </tr>
+                                <tr class="table-active">
+                                    <th scope="row"><img src="~/Content/Images/A1_bike.png" /></th>
+                                    <td>A1</td>
+                                    <td>Motorcycles with an engine capacity not exceeding 125 cubic centimetres, with a power rating not exceeding 11kW and with a power to weight ratio not exceeding 0.1 kW/kg. Motor tricycles with a power rating not exceeding 15 kW.</td>
+                                    <td>16 years</td>
+                                </tr>
+                                <tr class="table-active">
+                                    <th scope="row"><img src="~/Content/Images/A2_bike.png" /></th>
+                                    <td>A2</td>
+                                    <td>Motorcycles with a power rating not exceeding 35 kW, with a power to weight ratio not exceeding 0.2 kW/kg and not derived from a vehicle of more than double its power.</td>
+                                    <td>18 years</td>
+                                </tr>
+                                <tr class="table-active">
+                                    <th scope="row"><img src="~/Content/Images/A_bike.png" /></th>
+                                    <td>A</td>
+                                    <td>
+                                        Motorcycles
+
+                                        Motor tricycles
+                                    </td>
+                                    <td>24yrs or 20yrs with Progressive Access (see Motorcycle IBT  for details). Persons under 21 years of age are not eligible to ride a motor tricycle.</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingFour">
+                        <h4 class="panel-title">
+                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                Whats is Initial Basic Training (IBT) for motorcyclists?
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+                        <div class="panel-body">
+                            <h3>What is Initial Basic Training?</h3>
+                            <p>Initial Basic Training (IBT) is a mandatory training course that teaches basic riding skills to learner motorcyclists. It is part of the RSA’sGraduated Driver Licensing (GDL) scheme and is intended to improve road safety.</p>
+
+                            <h4>What does IBT involve?</h4>
+                            <p>
+                                IBT for a small motorcycle category 'AM' or 'A1' - is a 16 hour course broken into four separate modules 1,2,3 and 4 which must be completed in sequence.  Completing IBT for the first time on a larger motorcycle in category 'A2' or 'A' is an 18 hr course and involves completing three modules 1,3 and 5.   These modules are a mixture of theory and practical riding skills.
+                                When you have completed an  IBT module or the entire course, your instructor will record the details of your training in your logbook and issue you with a Certificate of Satisfactory Completion.
+                            </p>
+
+                            <p>You can now apply for your practical driving test.</p>
+
+                            <h4>The Progression module</h4>
+                            <p>If you want to upgrade the bike you ride (e.g. from automatic to manual or tricycle to two-wheeler) you can complete a progression module. This module allows you to get the training you need to operate a different type of bike without having to repeat the whole IBT course.</p>
+
+                            <h4>Finding an IBT course</h4>
+                            <p>IBT courses are only available at RSA approved IBT training centres and may only be delivered by RSA approved IBT instructors.</p>
+
+                            <p>IMPORTANT Before you begin your training, you should check that both centre and instructor are currently approved for the delivery of IBT.  On the day of your training your trainer will be happy to confirm their continuing RSA approval.  Only undertake IBT training once you are satisfied that your trainer still holds RSA approval.  Training completed with an individual who does not currently hold RSA approval cannot count as part of your IBT and will need to be repeated with an RSA approved IBT Trainer.</p>
+
+                            <h4>Benefits of IBT</h4>
+                            <p>Completing your initial basic training course means you will:</p>
+                            <ul>
+                                <li>Learn to become a safer road user.</li>
+                                <li>Develop a strong understanding of basic motorcycle riding skills.</li>
+                                <li>Be able to practice your riding unaccompanied on a public road.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingFive">
+                        <h4 class="panel-title">
+                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                What motorcycle stores and training are near me?
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
+                        <div class="panel-body">
+
+                            <h3>Check out our Locator!</h3>
+                            <p>Check out the map below for some of our favorite stores and training centers from around the country.</p>
+
+                            <div id="dvMap" style="width: 100%; height: 500px" class="col-md-8"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!--- END COL -->
+    </div><!--- END ROW -->
+</div>
+
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjRUCjcXQrhDh9dZ5OPm8q8bbLHu7-qwo"></script>
 <script type="text/javascript">
         var markers = @Html.Raw(ViewBag.Markers);
