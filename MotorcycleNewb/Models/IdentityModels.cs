@@ -37,5 +37,7 @@ namespace MotorcycleNewb.Models
         public System.Data.Entity.DbSet<MotorcycleNewb.Models.ProfileViewModel> ProfileViewModels { get; set; }
 
         public System.Data.Entity.DbSet<MotorcycleNewb.Models.Post> Posts { get; set; }
+
+        public System.Data.Entity.DbSet<MotorcycleNewb.Models.Mail> Mails { get; set; }
     }
 }
