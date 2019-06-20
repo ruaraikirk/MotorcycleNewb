@@ -84,6 +84,15 @@ namespace MotorcycleNewb.ServiceLayer
         }
 
         /*
+         * SUBSCRIPTION CRUD operations 
+         */
+        // Add new image to database
+        public void Add(Subscription sub)
+        {
+            unit.Subscriptions.Add(sub);
+        }
+
+        /*
          * FORUM (Posts & Comments) CRUD operations 
          */
         // Add new post to database

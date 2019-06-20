@@ -13,6 +13,7 @@ namespace MotorcycleNewb.Models.DataAccessLayer
         //ToDo
         IRepository<Comment> Comments { get; set; }
         IRepository<Post> Posts { get; set; }
+        IRepository<Subscription> Subscriptions { get; set; }
 
         void Update(Profile element);
         void Delete(Profile element);
