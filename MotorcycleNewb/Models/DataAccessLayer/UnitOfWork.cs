@@ -13,6 +13,7 @@ namespace MotorcycleNewb.Models.DataAccessLayer
         public IRepository<Image> Images { get; set; }
         public IRepository<Comment> Comments { get; set; }
         public IRepository<Post> Posts { get; set; }
+        public IRepository<Mail> Mails { get; set; }
 
         public UnitOfWork(ApplicationDbContext db)
         {

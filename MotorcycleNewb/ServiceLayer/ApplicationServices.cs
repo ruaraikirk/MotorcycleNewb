@@ -84,6 +84,16 @@ namespace MotorcycleNewb.ServiceLayer
         }
 
         /*
+         * NEWSLETTER SUBSCRIBE CRUD operations 
+         */
+        // Add new subscription to database
+        public void Add(Mail mail)
+        {
+            unit.Mails.Add(mail);
+        }
+
+
+        /*
          * FORUM (Posts & Comments) CRUD operations 
          */
         // Add new post to database

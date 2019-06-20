@@ -7,19 +7,32 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using MotorcycleNewb.Models;
+using MotorcycleNewb.Models.DataAccessLayer;
+using MotorcycleNewb.ServiceLayer;
 
 namespace MotorcycleNewb.Controllers
 {
     public class MailController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        private ApplicationServices applicationServices;
 
+        // Constructors 
+        public MailController()
+        {
+            applicationServices = new ApplicationServices(new UnitOfWork(new ApplicationDbContext()));
+        }
+        public MailController(IUnitOfWork unit)
+        {
+            applicationServices = new ApplicationServices(unit);
+        }
+        /*
         // GET: Mail
         public ActionResult Index()
         {
-            return View(db.Mails.ToList());
+            return View(applicationServices.GetMails());
         }
-
+        */
+        /*
         // GET: Mail/Details/5
         public ActionResult Details(string id)
         {
@@ -27,14 +40,14 @@ namespace MotorcycleNewb.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Mail mail = db.Mails.Find(id);
+            Mail mail = applicationServices.Mails.Find(id);
             if (mail == null)
             {
                 return HttpNotFound();
             }
             return View(mail);
         }
-
+        */
         // GET: Mail/Create
         public ActionResult Create()
         {
@@ -50,14 +63,15 @@ namespace MotorcycleNewb.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Mails.Add(mail);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                applicationServices.Add(mail);
+                applicationServices.Save();
+                return RedirectToAction("Index", "Home");
             }
 
             return View(mail);
         }
-
+        
+        /*
         // GET: Mail/Edit/5
         public ActionResult Edit(string id)
         {
@@ -65,14 +79,15 @@ namespace MotorcycleNewb.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Mail mail = db.Mails.Find(id);
+            Mail mail = applicationServices.Mails.Find(id);
             if (mail == null)
             {
                 return HttpNotFound();
             }
             return View(mail);
         }
-
+        */
+        /*
         // POST: Mail/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
@@ -82,13 +97,14 @@ namespace MotorcycleNewb.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(mail).State = EntityState.Modified;
+                applicationServices.Entry(mail).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(mail);
         }
-
+        */
+        /*
         // GET: Mail/Delete/5
         public ActionResult Delete(string id)
         {
@@ -103,7 +119,8 @@ namespace MotorcycleNewb.Controllers
             }
             return View(mail);
         }
-
+        */
+        /*
         // POST: Mail/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
@@ -114,12 +131,12 @@ namespace MotorcycleNewb.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-
+        */
         protected override void Dispose(bool disposing)
         {
             if (disposing)
             {
-                db.Dispose();
+                applicationServices.DisposeContext();
             }
             base.Dispose(disposing);
         }
