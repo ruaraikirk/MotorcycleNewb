@@ -13,11 +13,10 @@ namespace MotorcycleNewb.Controllers
     {
         private ApplicationServices applicationServices = new ApplicationServices(new UnitOfWork(new ApplicationDbContext()));
 
-        // GET: Wall
+        // GET: Profile Page (Wall)
         public ActionResult Index()
         {
-            // Profile page (wall) after the login or sign up
-            // The page has profile personal details, etc.
+            // Profile page (wall) after the login or sign up has profile personal details, etc.
 
             var accountId = applicationServices.GetCurrentAccountId(User);
             Profile profile = applicationServices.GetProfile(accountId);
@@ -32,6 +31,5 @@ namespace MotorcycleNewb.Controllers
             return View(wall);
         }
 
-        // TODO Redirect upon click of 'MotorcycleNewb' on header
     }
 }

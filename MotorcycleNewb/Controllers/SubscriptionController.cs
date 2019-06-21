@@ -15,13 +15,7 @@ namespace MotorcycleNewb.Controllers
     public class SubscriptionController : Controller
     {
         private ApplicationServices db = new ApplicationServices(new UnitOfWork(new ApplicationDbContext()));
-        /*
-        // GET: Subscription
-        public ActionResult Index()
-        {
-            return View(db.Subscriptions.ToList());
-        }
-        */
+
         // GET: Subscription/Create
         public ActionResult Create()
         {
@@ -34,7 +28,6 @@ namespace MotorcycleNewb.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "SubscriptionID, Name, Email")]Subscription subscription)
-        //public ActionResult Create(Subscription subscription)
         {
             if (ModelState.IsValid)
             {

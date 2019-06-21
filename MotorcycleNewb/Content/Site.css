@@ -10,8 +10,7 @@
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
-   will truncate terms that are too long to fit in the left column 
-*/
+   will truncate terms that are too long to fit in the left column */
 .dl-horizontal dt {
     white-space: normal;
 }
@@ -23,10 +22,8 @@ textarea {
     max-width: 280px;
 }
 
-
-
 /*
- * Profile Page
+ * Profile Page (Wall) styling
  */
 
 .fb-profile img.fb-image-lg {
@@ -58,9 +55,8 @@ textarea {
 }
 
 /*
- * Forum Posts & Comments
+ * Forum Posts & Comments styling
  */
-
 div.comment-container {
     background: #1C1E22;
 }
@@ -91,17 +87,15 @@ div.comment-container {
     position: relative;
 }
 
-    .comments-list li:after {
-        content: '';
-        display: block;
-        clear: both;
-        height: 0;
-        width: 0;
-    }
+.comments-list li:after {
+    content: '';
+    display: block;
+    clear: both;
+    height: 0;
+    width: 0;
+}
 
-/*********************
-         Avatar
- *******************/
+/* Mini-Profile Picture */
 .comments-list .comment-avatar {
     width: 50px;
     height: 50px;
@@ -114,10 +108,10 @@ div.comment-container {
     overflow: hidden;
 }
 
-    .comments-list .comment-avatar img {
-        width: 100%;
-        height: 100%;
-    }
+.comments-list .comment-avatar img {
+    width: 100%;
+    height: 100%;
+}
 
 .reply-list .comment-avatar {
     width: 30px;
@@ -131,13 +125,11 @@ div.comment-container {
     display: block;
     clear: both;
 }
-/**************************
-         Box Comments
- *************************/
+/* Comments */
 .comments-list .comment-box {
     position: relative;
 }
-/*First section of the comment box where Name is*/
+
 .comment-box .comment-head {
     background: #1C1E22;
     padding: 10px 12px;
@@ -155,7 +147,7 @@ div.comment-container {
     float: left;
     margin-left: 10px;
 }
-/*Date*/
+/* Date */
 .comment-box .comment-head span {
     float: right;
     color: #999;
@@ -163,7 +155,7 @@ div.comment-container {
     position: relative;
     top: 9px;
 }
-/*The content of the post*/
+/* Post Content */
 .comment-box .comment-content {
     background: #272B30;
     padding: 12px;
@@ -172,7 +164,7 @@ div.comment-container {
     -moz-border-radius: 0 0 4px 4px;
     border-radius: 0 0 4px 4px;
 }
-/*The comments link to show or hide the comments of a post*/
+/* Comment Link */
 .comments-collapsible:hover, .comments-collapsible:focus, .comments-collapsible:active, .comments-collapsible:visited, .comments-collapsible {
     text-decoration: underline !important;
     color: white;
@@ -188,18 +180,19 @@ div.comment-container {
     display: flex;
     justify-content: flex-end;
 }
-/*Text field to write new comment*/
+
+/* New comment */
 .write-comment {
     width: 100%;
 }
 
-    .write-comment form {
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        max-height: 40px;
-    }
-/*The content of new comment*/
+.write-comment form {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    max-height: 40px;
+}
+
 textarea#Text {
     max-width: 70%;
     resize: none;
@@ -216,12 +209,12 @@ textarea#Text {
     border-radius: 0 0 4px 4px;
     border: 1px solid #272B30;
 }
-/*The text field where to write post. Sited at the top of the wall*/
+/* New post */
 textarea {
     resize: none;
     max-width: 100%;
 }
-/**Upload post button*/
+
 .form-write-post section input {
     width: 30%;
     align-self: flex-end;
@@ -236,92 +229,3 @@ textarea {
 .utility-links, .utility-links:focus, .utility-links:visited, .utility-links:hover {
     text-decoration: none !important;
 }
-
-
-
-/*
-* FAQ Page
-*/
-/*
-.template_faq {
-    background: #edf3fe none repeat scroll 0 0;
-}
-
-.panel-group {
-    background: #fff none repeat scroll 0 0;
-    border-radius: 3px;
-    box-shadow: 0 5px 30px 0 rgba(0, 0, 0, 0.04);
-    margin-bottom: 0;
-    padding: 30px;
-}
-
-#accordion .panel {
-    border: medium none;
-    border-radius: 0;
-    box-shadow: none;
-    margin: 0 0 15px 10px;
-}
-
-#accordion .panel-heading {
-    border-radius: 30px;
-    padding: 0;
-}
-
-#accordion .panel-title a {
-    background: #ffb900 none repeat scroll 0 0;
-    border: 1px solid transparent;
-    border-radius: 30px;
-    color: #fff;
-    display: block;
-    font-size: 18px;
-    font-weight: 600;
-    padding: 12px 20px 12px 50px;
-    position: relative;
-    transition: all 0.3s ease 0s;
-}
-
-    #accordion .panel-title a.collapsed {
-        background: #fff none repeat scroll 0 0;
-        border: 1px solid #ddd;
-        color: #333;
-    }
-
-        #accordion .panel-title a::after, #accordion .panel-title a.collapsed::after {
-            background: #ffb900 none repeat scroll 0 0;
-            border: 1px solid transparent;
-            border-radius: 50%;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.58);
-            color: #fff;
-            content: "";
-            font-family: fontawesome;
-            font-size: 25px;
-            height: 55px;
-            left: -20px;
-            line-height: 55px;
-            position: absolute;
-            text-align: center;
-            top: -5px;
-            transition: all 0.3s ease 0s;
-            width: 55px;
-        }
-
-        #accordion .panel-title a.collapsed::after {
-            background: #fff none repeat scroll 0 0;
-            border: 1px solid #ddd;
-            box-shadow: none;
-            color: #333;
-            content: "";
-        }
-
-#accordion .panel-body {
-    background: transparent none repeat scroll 0 0;
-    border-top: medium none;
-    padding: 20px 25px 10px 9px;
-    position: relative;
-}
-
-    #accordion .panel-body p {
-        border-left: 1px dashed #8c8c8c;
-        padding-left: 25px;
-    }
-*/

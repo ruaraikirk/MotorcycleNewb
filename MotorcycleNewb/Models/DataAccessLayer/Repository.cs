@@ -20,7 +20,6 @@ namespace MotorcycleNewb.Models.DataAccessLayer
         public void Add(T element)
         {
             entities.Add(element);
-
         }
 
         public int Count()
@@ -41,7 +40,6 @@ namespace MotorcycleNewb.Models.DataAccessLayer
         public void Remove(T element)
         {
             entities.Remove(element);
-
         }
     }
 }

@@ -15,7 +15,7 @@ namespace MotorcycleNewb.Controllers
     {
         private ApplicationServices applicationServices = new ApplicationServices(new UnitOfWork(new ApplicationDbContext()));
 
-        // GET: Locator Map
+        // GET: Locator Map along with static content for FAQ
         public ActionResult Index()
         {
             string markers = "[";
@@ -53,7 +53,6 @@ namespace MotorcycleNewb.Controllers
                 CurrentProfile = profile,
                 IsThisUser = applicationServices.EnsureIsUserProfile(profile, User)
             };
-
 
             return View(user);
         }

@@ -30,14 +30,11 @@ namespace MotorcycleNewb.Models
             return new ApplicationDbContext();
         }
 
-        // DbSet property for each model to be saved
-
+        // DbSet property for each model to be saved to database
         public DbSet<Profile> Profiles { get; set; }
         public DbSet<Image> Images { get; set; }
-        public System.Data.Entity.DbSet<MotorcycleNewb.Models.ProfileViewModel> ProfileViewModels { get; set; }
-
-        public System.Data.Entity.DbSet<MotorcycleNewb.Models.Post> Posts { get; set; }
-
-        public System.Data.Entity.DbSet<MotorcycleNewb.Models.Subscription> Subscriptions { get; set; }
+        public DbSet<ProfileViewModel> ProfileViewModels { get; set; }
+        public DbSet<Post> Posts { get; set; }
+        public DbSet<Subscription> Subscriptions { get; set; }
     }
 }

@@ -79,7 +79,7 @@ namespace MotorcycleNewb.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
-                    return RedirectToAction("Index", "Wall"); // Redirect to profile page upon successful login
+                    return RedirectToAction("Index", "Wall"); // EDIT: Redirect to profile page upon successful login
                     // return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
