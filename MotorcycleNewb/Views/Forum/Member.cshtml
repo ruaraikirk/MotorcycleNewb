@@ -8,10 +8,6 @@
 <div class="jumbotron">
     <h1 class="display-3">Welcome to the MotorcycleNewb Forum!</h1>
     <p class="lead">Please abide by community rules. This forum is reviewed by moderators. Please click the button below for further details.</p>
-    <hr class="my-4">
-    <p class="lead">
-        <a class="btn btn-primary btn-lg" href="/Home/About" role="button">About</a>
-    </p>
 </div>
 
 <div class="col-md-12">
@@ -27,6 +23,5 @@
             </section>
         }
     }
-
     @Html.Partial("PostComments", Model.Posts, new ViewDataDictionary { { "Domain", Model.CurrentView } })
 </div>

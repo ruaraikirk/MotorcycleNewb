@@ -15,7 +15,7 @@ namespace MotorcycleNewb.Controllers
 
         private ApplicationServices db = new ApplicationServices(new UnitOfWork(new ApplicationDbContext()));
 
-        public ActionResult Lurker()
+        public ActionResult Lurker() // For unregistered users to view but not take part in the forum
         {
 
             IEnumerable<Post> posts = db.GetPosts().OrderByDescending(p => p.Timestamp);
@@ -23,7 +23,7 @@ namespace MotorcycleNewb.Controllers
             return View(posts);
         }
 
-        public ActionResult Member(int? id)
+        public ActionResult Member(int? id) // Registered user access to forum
         {
             if (id == null)
             {
@@ -47,24 +47,14 @@ namespace MotorcycleNewb.Controllers
                 IsThisUser = db.EnsureIsUserProfile(profile, User),
                 ProfilePhoto = profile.ProfileImage.FileName
             };
-            /*
-            //If the profile examined is not the current user then change some properties
-            if (!wvm.IsThisUser)
-            {
-                var user = appService.GetProfile(appService.GetCurrentUserId(User));
 
-                wvm.FriendStatus = appService.GetFriendStatus(user, profile).Item1;
-                wvm.ButtonStatus = appService.GetFriendStatus(user, profile).Item2;
-                wvm.User = user;
-                wvm.Photo = user.ProfilePic.FileName;
-            }
-            */
             return View(vm);
         }
 
-        /*POSTS*/
+        /*
+         * POSTS
+         */
         [HttpPost]
-        //[Route("Forum/UploadPost")]
         [ValidateAntiForgeryToken]
         public ActionResult UploadPost([Bind(Include = "PostId, PostContent, Timestamp, ProfileId")]Post post, string page)
         {
@@ -77,17 +67,11 @@ namespace MotorcycleNewb.Controllers
                 db.Add(post);
                 db.Save();
             }
-            /*
-            //If the post is uploaded into activity, stay in the activity page
-            if (page.Equals("Forum"))
-            {
-                return RedirectToAction("Forum", new { id = post.ProfileId });
-            }*/
+
             return RedirectToAction("Member", new { id = post.ProfileId });
         }
 
         [HttpPost]
-        //[Route("Forum/UploadComment")]
         [ValidateAntiForgeryToken]
         public ActionResult UploadComment([Bind(Include = "CommentId, CommentContent, Timestamp, ProfileId, PostId")]Comment comment, string page)
         {
@@ -100,10 +84,7 @@ namespace MotorcycleNewb.Controllers
                 db.Add(comment);
                 db.Save();
             }
-            /*if (page.Equals("Forum"))
-            {
-                return RedirectToAction("Activity", new { id = comment.ProfileId });
-            }*/
+
             return RedirectToAction("Member", new { id = comment.ProfileId });
         }
     }

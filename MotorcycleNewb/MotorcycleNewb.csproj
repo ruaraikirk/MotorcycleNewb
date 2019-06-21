@@ -226,14 +226,12 @@
     <Content Include="Content\bootstrap-slate.css" />
     <Content Include="Content\Images\A1_bike.png" />
     <Content Include="Content\Images\A2_bike.png" />
-    <Content Include="Content\Images\account-profile-avatar.png" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Images\A_bike.png" />
     <Content Include="Content\Images\biker_buddy.jpg" />
-    <Content Include="Content\Images\CR-1.jpg" />
     <Content Include="Content\Images\helmet-avatar.png" />
     <Content Include="Content\Images\moped.png" />
     <Content Include="Content\Images\motorcycle-image-avatar.png" />
@@ -242,7 +240,7 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Content\Site.css" />
+    <Content Include="Content\site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -271,7 +269,6 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
@@ -295,9 +292,7 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Profiles\Create.cshtml" />
     <Content Include="Views\Profiles\Delete.cshtml" />
-    <Content Include="Views\Profiles\Details.cshtml" />
     <Content Include="Views\Profiles\Edit.cshtml" />
-    <Content Include="Views\Profiles\Index.cshtml" />
     <Content Include="Views\Profiles\ChangeProfileImage.cshtml" />
     <Content Include="Views\Profiles\ChangeMotorcycleImage.cshtml" />
     <Content Include="Views\Forum\Member.cshtml" />
@@ -308,8 +303,6 @@
     <Content Include="Views\Locator\Index.cshtml" />
     <Content Include="Views\Shared\_MemberNavBar.cshtml" />
     <Content Include="Views\Subscription\Create.cshtml" />
-    <Content Include="Views\Subscription\Index.cshtml" />
-    <Content Include="Views\Subscription\Subscribe.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -12,6 +12,7 @@ namespace MotorcycleNewb.Models
         public string CommentContent { get; set; }
         public DateTime Timestamp { get; set; }
 
+        // Integer properties will act as foreign keys
         public int? ProfileId { get; set; }
         public int? PostId { get; set; }
 

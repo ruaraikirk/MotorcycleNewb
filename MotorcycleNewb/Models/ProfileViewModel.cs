@@ -8,8 +8,8 @@ namespace MotorcycleNewb.Models
 {
     public class ProfileViewModel
     {
-        [Key]
-        public Guid CurrAccId { get; set; } // Required to avoid errors relating to entity not having a key attribute...?
+        [Key] // Required to avoid errors relating to entity not having a key attribute when  Entity Framework tries to set up the database
+        public Guid CurrAccId { get; set; } 
 
         public Profile CurrentProfile { get; set; }
 

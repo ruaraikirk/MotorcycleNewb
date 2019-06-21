@@ -27,7 +27,6 @@ namespace MotorcycleNewb.Models.DataAccessLayer
         public void Dispose()
         {
             ApplicationDb.Dispose();
-
         }
 
         public void Commit()

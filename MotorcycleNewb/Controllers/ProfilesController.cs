@@ -17,7 +17,6 @@ namespace MotorcycleNewb.Controllers
 {
     public class ProfilesController : Controller
     {
-        // private ApplicationDbContext db = new ApplicationDbContext();
         private ApplicationServices applicationServices;
 
         // Constructors 
@@ -30,48 +29,10 @@ namespace MotorcycleNewb.Controllers
             applicationServices = new ApplicationServices(unit);
         }
 
-        // GET: Profiles
-        public ActionResult Index()
-        {
-            return View();
-        }
-
-        // Action to launch my profile page where edit, view profile deatils...
-        // NOT DONE, 
-        /*
-         * STUB
-         */ 
-
-        // GET: Profiles/Details/5 ***See comments for changes, needs review
-        public ActionResult Details(int? id) // Test
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest, "Oops! An error occurred whilst processing your request.");
-            }
-            Profile profile = applicationServices.GetProfile(id);
-            if (profile == null)
-            {
-                return HttpNotFound();
-            }
-            ProfileViewModel profileViewModel = new ProfileViewModel
-            {
-                CurrentProfile = profile,
-                IsThisUser = applicationServices.EnsureIsUserProfile(profile, User),
-                CurrentView = "profile",
-                ProfilePhoto = profile.ProfileImage.FileName,
-                MotorcyclePhoto = profile.MotorcycleImage.FileName
-            };
-
-            ViewBag.Partial = "Details"; //To check if it's edit or view section in Profile section of My profile page
-
-            return View(profileViewModel); // Changed
-        }
-
         // GET: Profiles/Create
         public ActionResult Create()
         {
-            ViewBag.AccountId = applicationServices.GetCurrentAccountId(User);
+            ViewBag.AccountId = applicationServices.GetCurrentAccountId(User); // Required to link new profile with .NET Identity GUID
 
             return View();
         }
@@ -94,14 +55,13 @@ namespace MotorcycleNewb.Controllers
                 applicationServices.Save();
                 return RedirectToAction("Index", "Wall"); // Redirect to Wall (profile page) following profile creation
             }
-            //ViewBag.AccountId = applicationServices.GetCurrentAccountId(User); // Delete in final clean up...
+
             return View(profile);
         }
 
         /*
-         * TODO - Complete CRUD operations for profile details...
+         *  More CRUD operations for profile
          */
-
         
         // GET: Profiles/Edit/5
         public ActionResult Edit(int? id)
@@ -126,8 +86,6 @@ namespace MotorcycleNewb.Controllers
                 MotorcyclePhoto = profile.MotorcycleImage.FileName
             };
 
-            ViewBag.Partial = "Edit";
-
             ViewBag.ApplicationId = applicationServices.GetCurrentAccountId(User);
             return View(vm);
         }
@@ -150,11 +108,11 @@ namespace MotorcycleNewb.Controllers
             return RedirectToAction("Edit", new { id = vm.CurrentProfile.ProfileId });
         }
 
-        // *Profile* image edit
+        // Profile image edit/upload
         // GET: Profiles/ChangeProfileImage/5
         public ActionResult ChangeProfileImage(int? id)
         {
-            //Change the profile photo
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest, "An error occurred whilst processing your request!");
@@ -185,7 +143,7 @@ namespace MotorcycleNewb.Controllers
         [HttpPost]
         public ActionResult ChangeProfileImage(HttpPostedFileBase upload)
         {
-            //Save new image into database from the file uploaded
+            // Save new image to database
             Profile profile = applicationServices.GetProfile(applicationServices.GetCurrentAccountId(User));
             Image image = profile.ProfileImage;
             try
@@ -205,7 +163,6 @@ namespace MotorcycleNewb.Controllers
 
                     }
                     return RedirectToAction("Index", "Wall");
-                    //return RedirectToAction("MyProfile", new { id = profile.ProfileId });
                 }
             }
             catch (RetryLimitExceededException)
@@ -223,11 +180,11 @@ namespace MotorcycleNewb.Controllers
             return View("ChangeProfileImage", vm);
         }
 
-        // *Motorcycle* image edit (duplicating code here, can this be refactored if time?
+        // Motorcycle image edit/upload (duplicating code here, could be refactored)
         // GET: Profiles/ChangeMotorcycleImage/5
         public ActionResult ChangeMotorcycleImage(int? id)
         {
-            //Change the users motorcycle photo
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest, "An error occurred whilst processing your request!");
@@ -258,7 +215,7 @@ namespace MotorcycleNewb.Controllers
         [HttpPost]
         public ActionResult ChangeMotorcycleImage(HttpPostedFileBase upload)
         {
-            //Save new image into database from the file uploaded
+            // Save new image to database 
             Profile profile = applicationServices.GetProfile(applicationServices.GetCurrentAccountId(User));
             Image image = profile.MotorcycleImage;
             try
@@ -278,7 +235,6 @@ namespace MotorcycleNewb.Controllers
 
                     }
                     return RedirectToAction("Index", "Wall");
-                    //return RedirectToAction("MyProfile", new { id = profile.ProfileId });
                 }
             }
             catch (RetryLimitExceededException)
@@ -322,7 +278,7 @@ namespace MotorcycleNewb.Controllers
             applicationServices.Save();
 
             // TODO Deleting from ASP.NET Identity
-            return RedirectToAction("LogOff", "Account"); // TOTO Fix Redirect to log user out and return to home page.
+            return RedirectToAction("LogOff", "Account"); // TODO Fix Redirect to log user out and return to home page.
             // See https://stackoverflow.com/questions/24318341/how-to-log-off-from-another-action for examples.
         }
 
