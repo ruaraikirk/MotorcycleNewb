@@ -13,6 +13,7 @@ namespace MotorcycleNewb.Models.DataAccessLayer
         public IRepository<Image> Images { get; set; }
         public IRepository<Comment> Comments { get; set; }
         public IRepository<Post> Posts { get; set; }
+        public IRepository<Subscription> Subscriptions { get; set; }
 
         public UnitOfWork(ApplicationDbContext db)
         {
@@ -21,6 +22,7 @@ namespace MotorcycleNewb.Models.DataAccessLayer
             Images = new Repository<Image>(ApplicationDb);
             Comments = new Repository<Comment>(ApplicationDb);
             Posts = new Repository<Post>(ApplicationDb);
+            Subscriptions = new Repository<Subscription>(ApplicationDb);
         }
         public void Dispose()
         {
